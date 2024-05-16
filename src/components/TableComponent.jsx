@@ -44,6 +44,7 @@ const TableComponent = () => {
             <table>
                 <thead>
                     <tr>
+                        <th>id_planta</th>
                         <th>Fecha/Hora</th>
                         <th>mH</th>
                         <th>Pho_7in1</th>
@@ -58,6 +59,7 @@ const TableComponent = () => {
                 <tbody>
                     {data.map(item => (
                         <tr key={item._id}>
+                            <td>{item.ID_plant}</td>
                             <td>{item.actualDate}</td>
                             <td>{item.mH}</td>
                             <td>{item.Pho_7in1}</td>
