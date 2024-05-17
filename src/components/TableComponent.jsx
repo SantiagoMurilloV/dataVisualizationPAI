@@ -15,13 +15,13 @@ const TableComponent = () => {
                 const [dateString, timeString] = item.actualDate.split(', ');
                 const [day, month, year] = dateString.split('/').map(part => parseInt(part, 10));
                 const [time, period] = timeString.split(' ');
-                let [hours, minutes] = time.split(':').map(part => parseInt(part, 10));
+                let [hours, minutes, seconds] = time.split(':').map(part => parseInt(part, 10));
                 if (period === 'p. m.' && hours !== 12) {
                     hours += 12;
                 } else if (period === 'a. m.' && hours === 12) {
                     hours = 0;
                 }
-                item.parsedDate = new Date(year, month - 1, day, hours, minutes);
+                item.parsedDate = new Date(year, month - 1, day, hours, minutes,seconds);
             });
 
             jsonData.sort((a, b) => {
@@ -30,7 +30,7 @@ const TableComponent = () => {
                 }
                 return b.parsedDate.getTime() - a.parsedDate.getTime();
             });
-
+            console.log(jsonData)
             setData(jsonData);
 
         } catch (error) {
